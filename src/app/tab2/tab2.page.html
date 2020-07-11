@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+ 
+  <div class="ion-text-center">
+    <h3>Cart</h3> 
+  </div>
+ 
+  <div class="ion-padding">
+ 
+    <ion-list>
+      <ion-item *ngFor="let p of cart" class="ion-text-wrap">
+        <ion-grid>
+          <ion-row class="ion-align-items-center" >
+            <ion-col size="2" class="ion-align-self-center">
+              <ion-button color="red" fill="clear" (click)="decreaseCartItem(p)">
+                <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+ 
+            <ion-col size="1" class="ion-align-self-center">
+              {{ p.Amount }}
+            </ion-col>
+ 
+            <ion-col size="2" class="ion-align-self-center">
+              <ion-button style="color:green" fill="clear" (click)="increaseCartItem(p)">
+                <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+ 
+            <ion-col size="2" offset="5">
+              <ion-button style="color:red" fill="clear" (click)="removeCartItem(p)">
+                <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="9">
+              <b>{{ p.ProductName }}</b>
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              <b>{{ p.Amount * p.Price | currency:'RF' }}</b>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              Total:
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              {{ getTotal() | currency:'RF' }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+ 
+    <ion-button expand="full" href="/payments">
+      Proceed to Checkout
+    </ion-button>
+  </div>
+ 
+</ion-content>

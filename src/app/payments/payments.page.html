@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="primary"> 
+    <ion-row>  
+      <ion-col>        
+          <ion-back-button defaultHref="tabs/tab1"></ion-back-button>        
+  </ion-col> 
+    <ion-col size="10">
+    <ion-text>      
+      <h2>Payments</h2>
+    </ion-text>
+  </ion-col> 
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-text>
+        <h3>Billing and Order details</h3>
+        </ion-text>
+        </ion-card-title>       
+    </ion-card-header>
+    <ion-card-content>
+      <form #f="ngForm" (ngSubmit)="pay()">
+      <ion-item>
+        <ion-label position="floating"> Name </ion-label>
+        <ion-input type="text" [(ngModel)]="name" required ngModel name="name" required></ion-input>
+        <ion-icon name="person-outline" slot="start"></ion-icon>  
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Town/City</ion-label>
+        <ion-input type="text" [(ngModel)]="town" required ngModel name="town" required></ion-input> 
+        <ion-icon name="location-outline" slot="start"></ion-icon>   
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call-outline" slot="start"></ion-icon> 
+        <ion-label position="floating">Phone</ion-label>
+        <ion-input type="tel" [(ngModel)]="phone" required ngModel name="phone" required></ion-input>    
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail-outline" slot="start"></ion-icon> 
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" required ngModel name="email" required></ion-input>    
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper-plane-outline" slot="start"></ion-icon> 
+        <ion-label position="floating">Shipment Adrress</ion-label>
+        <ion-input type="text" [(ngModel)]="ship_address" required ngModel name="ship_address" required placeholder="Eg Nyabugogo kwamutangana"></ion-input>    
+      </ion-item>
+      <ion-item>
+        <ion-text>
+          <span style="font-size: 15pt;"><b>Your order</b></span>
+        </ion-text>         
+      </ion-item>
+      <ion-grid class="ion-grid">
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item><b>Product</b></ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item><b>Amount</b></ion-item>
+          </ion-col>          
+        </ion-row>        
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item>1.8L COLESS KETTLELD  × 1</ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>18,000 Frw</ion-item>
+          </ion-col>          
+        </ion-row>
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item>23,500 BTU SPLIT AIR CONDITIONER WITH SILVER ION FILTER  × 1</ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>700,000 Frw</ion-item>
+          </ion-col>          
+        </ion-row>
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item>Subtotal</ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>718,000 Frw</ion-item>
+          </ion-col>          
+        </ion-row>
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item>Shipping Fees</ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>00 Frw</ion-item>
+          </ion-col>          
+        </ion-row>
+        <ion-row class="ion-align-items-center cell-class">
+          <ion-col  size="7">
+            <ion-item>Total </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item></ion-item>
+          </ion-col>          
+        </ion-row>
+        
+      </ion-grid>
+      <ion-list>
+  <ion-radio-group [(ngModel)]="pay_method" required ngModel name="pay_method" required>
+    <ion-list-header>
+      <ion-label>Payment Method</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Cash on delivery </ion-label>
+      <ion-radio slot="start" value="cash on delivery"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mobile Money/Credit Card</ion-label>
+      <ion-radio slot="start" value="mobile Money/Credit card" selected></ion-radio>
+    </ion-item>    
+  </ion-radio-group>
+</ion-list>
+
+      <ion-button expand="block" shape="round" color="primary" type="submit" [disabled]="!f.valid">
+        
+        <span style="text-transform:none!important;font-size:20px;">Confirm</span></ion-button> 
+      </form>     
+    </ion-card-content>
+  </ion-card>
+</ion-content>
